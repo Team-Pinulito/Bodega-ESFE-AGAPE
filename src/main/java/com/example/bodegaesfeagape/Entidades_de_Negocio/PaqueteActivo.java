@@ -23,7 +23,40 @@ public class PaqueteActivo {
     @OneToMany(mappedBy = "paqueteActivo", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<DetalleSolicitudActivo> detalleSolicitudes = new HashSet<>();
 
-    public PaqueteActivo() {
+    public PaqueteActivo(Set<DetalleSolicitudActivo> detalleSolicitudes) {
+        this.detalleSolicitudes = detalleSolicitudes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCorrelativo() {
+        return correlativo;
+    }
+
+    public void setCorrelativo(String correlativo) {
+        this.correlativo = correlativo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Set<DetalleSolicitudActivo> getDetalleSolicitudes() {
+        return detalleSolicitudes;
+    }
+
+    public void setDetalleSolicitudes(Set<DetalleSolicitudActivo> detalleSolicitudes) {
+        this.detalleSolicitudes = detalleSolicitudes;
     }
 
 
