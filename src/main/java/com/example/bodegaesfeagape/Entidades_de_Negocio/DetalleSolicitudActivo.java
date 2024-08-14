@@ -6,6 +6,8 @@ import java.util.Set;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "detalleSolicitudActivo")
 public class DetalleSolicitudActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,11 +17,7 @@ public class DetalleSolicitudActivo {
     @NotNull(message = "La cantidad es requerida")
     private int cantidad;
     @NotNull(message = "El estatus es requerido")
-    private byte estatus;
-
-    @OneToMany(mappedBy = "paqueteActivo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<DetalleSolicitudActivo> detalleSolicitudes = new HashSet<>();
-    
+    private byte estatus;    
 
     public long getId() {
         return id;
@@ -69,20 +67,4 @@ public class DetalleSolicitudActivo {
     public void setEstatus(byte estatus) {
         this.estatus = estatus;
     }
-
-
-    public Set<DetalleSolicitudActivo> getDetalleSolicitudes() {
-        return detalleSolicitudes;
-    }
-
-
-    public void setDetalleSolicitudes(Set<DetalleSolicitudActivo> detalleSolicitudes) {
-        this.detalleSolicitudes = detalleSolicitudes;
-    }
-
-
-    public DetalleSolicitudActivo(Set<DetalleSolicitudActivo> detalleSolicitudes) {
-        this.detalleSolicitudes = detalleSolicitudes;
-    }
-
 }
