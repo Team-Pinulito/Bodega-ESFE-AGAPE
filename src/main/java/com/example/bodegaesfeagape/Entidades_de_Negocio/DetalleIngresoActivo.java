@@ -1,11 +1,12 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
+import java.util.HashSet;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 public class DetalleIngresoActivo {
-  @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
@@ -16,4 +17,5 @@ public class DetalleIngresoActivo {
     private int cantidad;
     @NotNull(message = "La cantidad es requerida")
     private double precio;
+
 }
