@@ -24,9 +24,7 @@ public class DetalleSolicitudActivo {
 
     @NotNull(message = "El estatus es requerido")
     private byte estatus;
-
     
-
     public Integer getCantidad() {
         return cantidad;
     }
