@@ -11,9 +11,13 @@ public class DetalleSolicitudActivo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long solicitudActivoId;
-
-    private int activoId;
+    @ManyToOne
+    @JoinColumn(name = "solicitud_id")
+    private SolicitudActivo solicitudActivo;
+    
+    @ManyToOne
+    @JoinColumn(name = "Activo_id")
+    private Activo activoId;
 
     @NotNull(message = "La cantidad es requerida")
     private int cantidad;
@@ -27,22 +31,6 @@ public class DetalleSolicitudActivo {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getSolicitudActivoId() {
-        return solicitudActivoId;
-    }
-
-    public void setSolicitudActivoId(long solicitudActivoId) {
-        this.solicitudActivoId = solicitudActivoId;
-    }
-
-    public int getActivoId() {
-        return activoId;
-    }
-
-    public void setActivoId(int activoId) {
-        this.activoId = activoId;
     }
 
     public int getCantidad() {
@@ -59,6 +47,22 @@ public class DetalleSolicitudActivo {
 
     public void setEstatus(byte estatus) {
         this.estatus = estatus;
+    }
+
+    public SolicitudActivo getSolicitudActivo() {
+        return solicitudActivo;
+    }
+
+    public void setSolicitudActivo(SolicitudActivo solicitudActivo) {
+        this.solicitudActivo = solicitudActivo;
+    }
+
+    public Activo getActivoId() {
+        return activoId;
+    }
+
+    public void setActivoId(Activo activoId) {
+        this.activoId = activoId;
     }
  
 }
