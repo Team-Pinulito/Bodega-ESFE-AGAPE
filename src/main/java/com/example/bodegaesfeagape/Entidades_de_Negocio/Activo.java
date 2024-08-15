@@ -17,7 +17,6 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name = "Activos")
 public class Activo {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

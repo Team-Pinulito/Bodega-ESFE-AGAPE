@@ -1,10 +1,10 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
-import java.util.HashSet;
-import java.util.Set;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "detalleIngresoActivo")
 public class DetalleIngresoActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,6 @@ public class DetalleIngresoActivo {
 
     @NotNull(message = "La cantidad es requerida")
     private double precio;
-
-    @OneToMany(mappedBy = "DetalleIngresoActivo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<IngresoActivo> ingresoActivos = new HashSet<>();
-
     
     public int getId() {
         return id;
@@ -61,15 +57,6 @@ public class DetalleIngresoActivo {
         this.precio = precio;
     }
 
-
-    public Set<IngresoActivo> getIngresoActivos() {
-        return ingresoActivos;
-    }
-
-
-    public void setIngresoActivos(Set<IngresoActivo> ingresoActivos) {
-        this.ingresoActivos = ingresoActivos;
-    }
 
 
 }

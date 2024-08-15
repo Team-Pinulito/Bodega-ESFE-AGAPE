@@ -1,14 +1,12 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
 
-import java.util.HashSet;
-import java.util.Set;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-
+@Entity
+@Table(name = "paqueteActivo")
 public class PaqueteActivo {
-    
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +17,6 @@ public class PaqueteActivo {
 
     @NotNull(message = "El Nombre es Requerido")
     private String nombre;
-
-    @OneToMany(mappedBy = "paqueteActivo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<DetalleSolicitudActivo> detalleSolicitudes = new HashSet<>();
-
-    public PaqueteActivo(Set<DetalleSolicitudActivo> detalleSolicitudes) {
-        this.detalleSolicitudes = detalleSolicitudes;
-    }
 
     public int getId() {
         return id;
@@ -50,14 +41,5 @@ public class PaqueteActivo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public Set<DetalleSolicitudActivo> getDetalleSolicitudes() {
-        return detalleSolicitudes;
-    }
-
-    public void setDetalleSolicitudes(Set<DetalleSolicitudActivo> detalleSolicitudes) {
-        this.detalleSolicitudes = detalleSolicitudes;
-    }
-
 
 }

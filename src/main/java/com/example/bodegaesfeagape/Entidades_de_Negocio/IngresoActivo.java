@@ -1,11 +1,12 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "ingresoActivo")
 public class IngresoActivo {
 
     @Id
@@ -20,13 +21,8 @@ public class IngresoActivo {
     @NotNull(message = "El correlativo es requerido")
     private String correlativo;
 
+    @NotBlank(message = "El Numero de Documento es requerido")
     private String numeroDocRelacionado;
-
-    private double total;
-
-    @OneToMany(mappedBy = "ingresoActivo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Usuario> usuarios = new HashSet<>();
-
 
     
     public int getId() {
@@ -86,30 +82,5 @@ public class IngresoActivo {
     public void setNumeroDocRelacionado(String numeroDocRelacionado) {
         this.numeroDocRelacionado = numeroDocRelacionado;
     }
-
-
-
-    public double getTotal() {
-        return total;
-    }
-
-
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-
-
-    public Set<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-
-
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
 
 }
