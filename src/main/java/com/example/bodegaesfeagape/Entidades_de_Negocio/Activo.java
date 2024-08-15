@@ -19,7 +19,7 @@ public class Activo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @NotBlank(message = "El nombre es requerido")
     private String nombre;
@@ -50,13 +50,30 @@ public class Activo {
     @OneToMany(mappedBy = "activo")
     private Set<InventarioActivo> inventarioActivos = new HashSet<>();
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
+
+    public Set<DetallePaqueteActivo> getDetallePaqueteActivos() {
+        return detallePaqueteActivos;
+    }
+
+    public void setDetallePaqueteActivos(Set<DetallePaqueteActivo> detallePaqueteActivos) {
+        this.detallePaqueteActivos = detallePaqueteActivos;
+    }
+
+    public Set<InventarioActivo> getInventarioActivos() {
+        return inventarioActivos;
+    }
+
+    public void setInventarioActivos(Set<InventarioActivo> inventarioActivos) {
+        this.inventarioActivos = inventarioActivos;
+    }
+
 
     public String getNombre() {
         return nombre;
