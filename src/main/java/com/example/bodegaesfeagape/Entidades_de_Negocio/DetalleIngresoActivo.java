@@ -9,13 +9,17 @@ public class DetalleIngresoActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private int inventarioActivoId;
+
     @NotNull(message = "La cantidad es requerida")
     private int cantidad;
+
     @NotNull(message = "La cantidad es requerida")
     private double precio;
-    @OneToMany(mappedBy = "ingresoActivo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<DetalleIngresoActivo> detalleIngresos = new HashSet<>();
+
+    @OneToMany(mappedBy = "DetalleIngresoActivo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<IngresoActivo> ingresoActivos = new HashSet<>();
 
     
     public int getId() {
@@ -58,18 +62,14 @@ public class DetalleIngresoActivo {
     }
 
 
-    public Set<DetalleIngresoActivo> getDetalleIngresos() {
-        return detalleIngresos;
+    public Set<IngresoActivo> getIngresoActivos() {
+        return ingresoActivos;
     }
 
 
-    public void setDetalleIngresos(Set<DetalleIngresoActivo> detalleIngresos) {
-        this.detalleIngresos = detalleIngresos;
+    public void setIngresoActivos(Set<IngresoActivo> ingresoActivos) {
+        this.ingresoActivos = ingresoActivos;
     }
 
-
-    public DetalleIngresoActivo(Set<DetalleIngresoActivo> detalleIngresos) {
-        this.detalleIngresos = detalleIngresos;
-    }
 
 }

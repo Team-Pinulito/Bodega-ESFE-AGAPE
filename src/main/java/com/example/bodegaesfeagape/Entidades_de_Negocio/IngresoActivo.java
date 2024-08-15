@@ -25,7 +25,7 @@ public class IngresoActivo {
     private double total;
 
     @OneToMany(mappedBy = "ingresoActivo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<DetalleIngresoActivo> detalleIngresos = new HashSet<>();
+    private Set<Usuario> usuarios = new HashSet<>();
 
 
     
@@ -101,20 +101,14 @@ public class IngresoActivo {
 
 
 
-    public Set<DetalleIngresoActivo> getDetalleIngresos() {
-        return detalleIngresos;
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
     }
 
 
 
-    public void setDetalleIngresos(Set<DetalleIngresoActivo> detalleIngresos) {
-        this.detalleIngresos = detalleIngresos;
-    }
-
-
-
-    public IngresoActivo(Set<DetalleIngresoActivo> detalleIngresos) {
-        this.detalleIngresos = detalleIngresos;
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
 
