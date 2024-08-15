@@ -3,6 +3,8 @@ package com.example.bodegaesfeagape.Acceso_a_Datos.servicios.implementaciones;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.bodegaesfeagape.Acceso_a_Datos.repositorios.IEstanteRepository;
@@ -13,7 +15,12 @@ import com.example.bodegaesfeagape.Entidades_de_Negocio.Estante;
 public class EstanteService implements IEstanteService{
     @Autowired
     private IEstanteRepository iEstanteRepository;
-
+    
+    @Override
+    public Page<Estante> buscarTodosPaginados(Pageable pageable) {
+        return iEstanteRepository.findAll(pageable);
+    }
+    
     @Override
     public List<Estante> obtenerTodos() {
         return iEstanteRepository.findAll();

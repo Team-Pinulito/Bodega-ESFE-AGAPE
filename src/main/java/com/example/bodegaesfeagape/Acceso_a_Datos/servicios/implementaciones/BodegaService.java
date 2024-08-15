@@ -1,6 +1,8 @@
 package com.example.bodegaesfeagape.Acceso_a_Datos.servicios.implementaciones;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.bodegaesfeagape.Acceso_a_Datos.repositorios.IBodegaRepository;
@@ -13,6 +15,11 @@ import java.util.Optional;
 public class BodegaService implements IBodegaService{
     @Autowired
     private IBodegaRepository iBodegaRepository;
+
+    @Override
+    public Page<Bodega> buscarTodosPaginados(Pageable pageable) {
+        return iBodegaRepository.findAll(pageable);
+    }
 
     @Override
     public List<Bodega> obtenerTodos() {

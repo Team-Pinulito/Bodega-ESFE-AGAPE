@@ -3,6 +3,8 @@ package com.example.bodegaesfeagape.Acceso_a_Datos.servicios.implementaciones;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.bodegaesfeagape.Acceso_a_Datos.repositorios.IKardexActivoRepository;
@@ -11,8 +13,14 @@ import com.example.bodegaesfeagape.Entidades_de_Negocio.KardexActivo;
 
 @Service
 public class KardexActivoService implements IKardexActivoService{
+    
     @Autowired
     private IKardexActivoRepository iKardexActivoRepository;
+
+    @Override
+    public Page<KardexActivo> buscarTodosPaginados(Pageable pageable) {
+        return iKardexActivoRepository.findAll(pageable);
+    }
 
     @Override
     public List<KardexActivo> obtenerTodos() {
