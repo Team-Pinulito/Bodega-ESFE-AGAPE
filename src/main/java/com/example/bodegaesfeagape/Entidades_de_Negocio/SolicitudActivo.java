@@ -29,7 +29,10 @@ public class SolicitudActivo {
 
     @NotNull(message = "La fecha de recepción es requerida")
     private LocalDateTime fechaRecepcion;
-
+    
+    @NotNull(message = "El estado es requerido")
+    private Byte status;
+    
     @NotNull(message = "La fecha de entrega esperada es requerida")
     private LocalDateTime fechaEntregaEsperada;
 
@@ -151,6 +154,14 @@ public class SolicitudActivo {
 
     public void setDetalleSolicitudActivos(Set<DetalleSolicitudActivo> detalleSolicitudActivos) {
         this.detalleSolicitudActivos = detalleSolicitudActivos;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     
