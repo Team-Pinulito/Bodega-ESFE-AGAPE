@@ -1,7 +1,5 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
