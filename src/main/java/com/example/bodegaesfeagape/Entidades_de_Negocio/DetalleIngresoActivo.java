@@ -21,10 +21,6 @@ public class DetalleIngresoActivo {
 
     @NotNull(message = "El Precio es requerida")
     private BigDecimal precio;
-    
-
-   
-
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
