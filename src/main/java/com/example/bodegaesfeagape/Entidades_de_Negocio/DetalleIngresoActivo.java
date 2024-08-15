@@ -1,5 +1,7 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -18,7 +20,7 @@ public class DetalleIngresoActivo {
     private Integer cantidad;
 
     @NotNull(message = "El Precio es requerida")
-    private double precio;
+    private BigDecimal precio;
     
 
    
@@ -39,16 +41,6 @@ public class DetalleIngresoActivo {
     }
 
 
-    public double getPrecio() {
-        return precio;
-    }
-
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-
     public InventarioActivo getInventarioActivoId() {
         return inventarioActivoId;
     }
@@ -66,6 +58,16 @@ public class DetalleIngresoActivo {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
     }
 
 

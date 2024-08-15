@@ -20,18 +20,18 @@ public class DetalleSolicitudActivo {
     private Activo activoId;
 
     @NotNull(message = "La cantidad es requerida")
-    private int cantidad;
+    private Integer cantidad;
 
     @NotNull(message = "El estatus es requerido")
     private byte estatus;
 
     
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
