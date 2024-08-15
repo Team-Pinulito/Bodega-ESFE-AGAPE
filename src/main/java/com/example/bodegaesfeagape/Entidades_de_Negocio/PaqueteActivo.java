@@ -1,6 +1,5 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
-import groovy.util.logging.Log;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,7 +9,7 @@ public class PaqueteActivo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Log id;
+    private Integer id;
 
     @NotNull(message = "El Correlativo es Requerido")
     private String correlativo;
@@ -34,12 +33,13 @@ public class PaqueteActivo {
         this.nombre = nombre;
     }
 
-    public Log getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Log id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
+   
 }

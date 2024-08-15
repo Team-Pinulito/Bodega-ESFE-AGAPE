@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 public class DetalleSolicitudActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "solicitudActivo_id")
@@ -25,13 +25,7 @@ public class DetalleSolicitudActivo {
     @NotNull(message = "El estatus es requerido")
     private byte estatus;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    
 
     public int getCantidad() {
         return cantidad;
@@ -63,6 +57,14 @@ public class DetalleSolicitudActivo {
 
     public void setActivoId(Activo activoId) {
         this.activoId = activoId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
  
 }

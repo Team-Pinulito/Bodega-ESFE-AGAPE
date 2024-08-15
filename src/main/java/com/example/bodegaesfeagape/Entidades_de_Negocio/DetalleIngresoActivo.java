@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 public class DetalleIngresoActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "inventarioActivoId_id")
@@ -21,14 +21,7 @@ public class DetalleIngresoActivo {
     private double precio;
     
 
-    public Long getId() {
-        return id;
-    }
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+   
 
 
     public void setCantidad(Integer cantidad) {
@@ -63,6 +56,16 @@ public class DetalleIngresoActivo {
 
     public void setInventarioActivoId(InventarioActivo inventarioActivoId) {
         this.inventarioActivoId = inventarioActivoId;
+    }
+
+
+    public Integer getId() {
+        return id;
+    }
+
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 
