@@ -26,7 +26,7 @@ public class DetallePaqueteActivo {
     private Activo Activo;
 
     @NotNull(message = "La cantidad es requerida")
-    private int cantidad;
+    private Integer cantidad;
 
     public Integer getId() {
         return id;
