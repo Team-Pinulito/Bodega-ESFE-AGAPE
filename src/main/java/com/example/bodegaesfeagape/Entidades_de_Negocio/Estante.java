@@ -23,10 +23,10 @@ public class Estante {
     @NotBlank(message = "La descripción es requerida")
     private String descripcion;
 
-    @OneToMany(mappedBy = "activo")
+    @OneToMany(mappedBy = "estante")
     private Set<Activo> activos = new HashSet<>();
 
-    @OneToMany(mappedBy = "activo")
+    @OneToMany(mappedBy = "estante")
     private Set<InventarioActivo> inventarioActivos = new HashSet<>();
 
     public Integer getId() {

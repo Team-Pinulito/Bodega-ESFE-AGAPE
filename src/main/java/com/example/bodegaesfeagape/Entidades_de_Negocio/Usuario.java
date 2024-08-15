@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuarios")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,13 +51,13 @@ public class Usuario {
     private String direccion;
 
     @OneToMany(mappedBy = "usuario")
-    private Set<AjusteInventario> ajustesInventario = new HashSet<>();
+    private Set<AjusteInventario> ajusteInventarios = new HashSet<>();
 
     @OneToMany(mappedBy = "usuario")
-    private Set<IngresoActivo> ingresoActivo = new HashSet<>();
+    private Set<IngresoActivo> ingresoActivos = new HashSet<>();
 
     @OneToMany(mappedBy = "usuario")
-    private Set<SolicitudActivo> solicitudActivo = new HashSet<>();
+    private Set<SolicitudActivo> solicitudActivos = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -139,27 +139,29 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public Set<AjusteInventario> getAjustesInventario() {
-        return ajustesInventario;
+    public Set<AjusteInventario> getAjusteInventarios() {
+        return ajusteInventarios;
     }
 
-    public void setAjustesInventario(Set<AjusteInventario> ajustesInventario) {
-        this.ajustesInventario = ajustesInventario;
+    public void setAjusteInventarios(Set<AjusteInventario> ajusteInventarios) {
+        this.ajusteInventarios = ajusteInventarios;
     }
 
-    public Set<IngresoActivo> getIngresoActivo() {
-        return ingresoActivo;
+    public Set<IngresoActivo> getIngresoActivos() {
+        return ingresoActivos;
     }
 
-    public void setIngresoActivo(Set<IngresoActivo> ingresoActivo) {
-        this.ingresoActivo = ingresoActivo;
+    public void setIngresoActivos(Set<IngresoActivo> ingresoActivos) {
+        this.ingresoActivos = ingresoActivos;
     }
 
-    public Set<SolicitudActivo> getSolicitudActivo() {
-        return solicitudActivo;
+    public Set<SolicitudActivo> getSolicitudActivos() {
+        return solicitudActivos;
     }
 
-    public void setSolicitudActivo(Set<SolicitudActivo> solicitudActivo) {
-        this.solicitudActivo = solicitudActivo;
+    public void setSolicitudActivos(Set<SolicitudActivo> solicitudActivos) {
+        this.solicitudActivos = solicitudActivos;
     }
+
+    
 }

@@ -8,14 +8,11 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "ajusteinventario")
+@Table(name = "ajusteinventarios")
 public class AjusteInventario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @NotNull(message = "El usuarioId es requerido")
-    private Integer usuarioId;
 
     @NotNull(message = "La fecha de ingreso es requerida")
     @Temporal(TemporalType.DATE)
@@ -39,7 +36,7 @@ public class AjusteInventario {
     private InventarioActivo inventarioActivo;
 
     @ManyToOne
-    @JoinColumn(name = "usuarioId", nullable = false)
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
     public Integer getId() {
@@ -48,14 +45,6 @@ public class AjusteInventario {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public @NotNull(message = "El usuarioId es requerido") Integer getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(@NotNull(message = "El usuarioId es requerido") Integer usuarioId) {
-        this.usuarioId = usuarioId;
     }
 
     public @NotNull(message = "La fecha de ingreso es requerida") LocalDate getFechaIngreso() {

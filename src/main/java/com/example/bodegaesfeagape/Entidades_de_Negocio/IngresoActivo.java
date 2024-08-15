@@ -15,7 +15,7 @@ public class IngresoActivo {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuarioId;
+    private Usuario usuario;
 
     @NotNull(message = "La fecha de ingreso es requerida")
     private Date fechaIngreso;
@@ -50,20 +50,21 @@ public class IngresoActivo {
         this.numeroDocRelacionado = numeroDocRelacionado;
     }
 
-    public Usuario getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Usuario usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
+    
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
    
