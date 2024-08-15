@@ -16,8 +16,8 @@ public class DetalleSolicitudActivo {
     private SolicitudActivo solicitudActivo;
     
     @ManyToOne
-    @JoinColumn(name = "Activo_id")
-    private Activo activoId;
+    @JoinColumn(name = "activo_id")
+    private Activo activo;
 
     @NotNull(message = "La cantidad es requerida")
     private Integer cantidad;
@@ -49,12 +49,12 @@ public class DetalleSolicitudActivo {
         this.solicitudActivo = solicitudActivo;
     }
 
-    public Activo getActivoId() {
-        return activoId;
+    public Activo getActivo() {
+        return activo;
     }
 
-    public void setActivoId(Activo activoId) {
-        this.activoId = activoId;
+    public void setActivo(Activo activo) {
+        this.activo = activo;
     }
 
     public Integer getId() {
