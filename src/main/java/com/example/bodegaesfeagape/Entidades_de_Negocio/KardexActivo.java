@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 public class KardexActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "inventarioActivo_id")
@@ -20,20 +20,37 @@ public class KardexActivo {
     private LocalDateTime fechaMovimiento;
 
     @NotNull(message = "La cantidad es requerida")
-    private int cantidad;
+    private Integer cantidad;
 
     @NotNull(message = "El tipo de movimiento es requerido")
     private byte tipoMovimiento;
 
     @NotNull(message = "El saldo es requerido")
-    private int saldo;
+    private Integer saldo;
 
-    public Long getId() {
+    
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Integer getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Integer saldo) {
+        this.saldo = saldo;
     }
 
     public InventarioActivo getInventarioActivo() {
@@ -52,13 +69,7 @@ public class KardexActivo {
         this.fechaMovimiento = fechaMovimiento;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+   
 
     public byte getTipoMovimiento() {
         return tipoMovimiento;
@@ -68,13 +79,6 @@ public class KardexActivo {
         this.tipoMovimiento = tipoMovimiento;
     }
 
-    public int getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
-    }
-
+    
     
 }
