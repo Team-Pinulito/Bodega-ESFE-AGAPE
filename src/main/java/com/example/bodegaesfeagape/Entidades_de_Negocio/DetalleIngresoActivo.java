@@ -8,33 +8,31 @@ import jakarta.validation.constraints.NotNull;
 public class DetalleIngresoActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    private int inventarioActivoId;
+    @ManyToOne
+    @JoinColumn(name = "inventarioActivoId_id")
+    private InventarioActivo inventarioActivoId;
 
     @NotNull(message = "La cantidad es requerida")
-    private int cantidad;
+    private Integer cantidad;
 
-    @NotNull(message = "La cantidad es requerida")
+    @NotNull(message = "El Precio es requerida")
     private double precio;
     
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
 
-    public int getInventarioActivoId() {
-        return inventarioActivoId;
-    }
-
-
-    public void setInventarioActivoId(int inventarioActivoId) {
-        this.inventarioActivoId = inventarioActivoId;
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
 
@@ -55,6 +53,16 @@ public class DetalleIngresoActivo {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+
+    public InventarioActivo getInventarioActivoId() {
+        return inventarioActivoId;
+    }
+
+
+    public void setInventarioActivoId(InventarioActivo inventarioActivoId) {
+        this.inventarioActivoId = inventarioActivoId;
     }
 
 

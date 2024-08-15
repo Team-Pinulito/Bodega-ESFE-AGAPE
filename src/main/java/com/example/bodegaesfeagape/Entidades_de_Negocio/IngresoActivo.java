@@ -11,9 +11,11 @@ public class IngresoActivo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    private int usuarioId;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuarioId;
 
     @NotNull(message = "La fecha de ingreso es requerida")
     private Date fechaIngreso;
@@ -24,63 +26,44 @@ public class IngresoActivo {
     @NotBlank(message = "El Numero de Documento es requerido")
     private String numeroDocRelacionado;
 
-    
-    public int getId() {
-        return id;
-    }
-
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-
-    public int getUsuarioId() {
-        return usuarioId;
-    }
-
-
-
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
-
-
     public Date getFechaIngreso() {
         return fechaIngreso;
     }
-
-
 
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
-
-
     public String getCorrelativo() {
         return correlativo;
     }
-
-
 
     public void setCorrelativo(String correlativo) {
         this.correlativo = correlativo;
     }
 
-
-
     public String getNumeroDocRelacionado() {
         return numeroDocRelacionado;
     }
 
-
-
     public void setNumeroDocRelacionado(String numeroDocRelacionado) {
         this.numeroDocRelacionado = numeroDocRelacionado;
+    }
+
+    public Usuario getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Usuario usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

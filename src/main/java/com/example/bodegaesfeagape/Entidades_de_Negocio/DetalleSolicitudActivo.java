@@ -12,7 +12,7 @@ public class DetalleSolicitudActivo {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "solicitud_id")
+    @JoinColumn(name = "solicitudActivo_id")
     private SolicitudActivo solicitudActivo;
     
     @ManyToOne
