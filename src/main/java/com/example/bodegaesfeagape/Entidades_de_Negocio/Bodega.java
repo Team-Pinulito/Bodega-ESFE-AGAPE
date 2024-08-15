@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotBlank;
 public class Bodega {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank(message = "El nombre es requerido")
     private String nombre;
@@ -22,13 +22,7 @@ public class Bodega {
     @OneToMany(mappedBy = "bodega")
     private Set<Estante> estantes = new HashSet<>();
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -52,6 +46,14 @@ public class Bodega {
 
     public void setEstantes(Set<Estante> estantes) {
         this.estantes = estantes;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     
