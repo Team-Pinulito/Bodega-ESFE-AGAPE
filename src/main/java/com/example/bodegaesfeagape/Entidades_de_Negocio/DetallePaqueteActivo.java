@@ -23,7 +23,7 @@ public class DetallePaqueteActivo {
 
     @ManyToOne
     @JoinColumn(name = "activo_id")
-    private Activo Activo;
+    private Activo activo;
 
     @NotNull(message = "La cantidad es requerida")
     private Integer cantidad;
@@ -44,13 +44,6 @@ public class DetallePaqueteActivo {
         this.paqueteActivo = paqueteActivo;
     }
 
-    public Activo getActivo() {
-        return Activo;
-    }
-
-    public void setActivo(Activo activo) {
-        Activo = activo;
-    }
 
     public Integer getCantidad() {
         return cantidad;
@@ -58,6 +51,14 @@ public class DetallePaqueteActivo {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public Activo getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Activo activo) {
+        this.activo = activo;
     }
 
     
