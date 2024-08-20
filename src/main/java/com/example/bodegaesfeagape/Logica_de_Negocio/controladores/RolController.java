@@ -74,5 +74,17 @@ public class RolController {
         return "/roles/edit";
     }
 
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable("id") Integer id, Model model) {
+        Optional<Rol> rOptional = rolBL.buscarPorId(id);
+        if (rOptional.isPresent()) {
+            Rol rol = rOptional.get();
+            model.addAttribute("rol", rol);
+            return "roles/details"; 
+        } else {
+            return "redirect:/roles/index"; 
+        }
+    }
+
 
 }
