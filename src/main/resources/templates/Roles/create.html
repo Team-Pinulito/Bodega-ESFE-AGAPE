@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="layouts/_mainLayout">
+    layout:decorate="layout/_mainLayout">
 
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form th:action="@{/roles/save}" th:object="${productoJDMR}" class="row" method="post">
+                    <form th:action="@{/roles/save}" th:object="${rol}" class="row" method="post">
                         <div class="col-md-12">
                             <label class="form-label" for="nombre">Nombre<span style="color: red;">*</span></label>
                             <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
