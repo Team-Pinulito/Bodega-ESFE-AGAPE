@@ -86,5 +86,25 @@ public class RolController {
         }
     }
 
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable("id") Integer id, Model model) {
+        Optional<Rol> rOptional = rolBL.buscarPorId(id);
+        if (rOptional.isPresent()) {
+            Rol rol = rOptional.get();
+            model.addAttribute("rol", rol);
+            return "/roles/delete";
+        } else {
+            return "redirect:/roles/index";
+        }
+    }
+
+    @PostMapping("/delete")
+    public String delete(Rol rol, RedirectAttributes attributes) {
+        rolBL.eliminarPorId(rol.getId());
+        attributes.addFlashAttribute("msg", "Rol eliminado correctamente");
+        return "redirect:/roles/index";
+    }
+
+
 
 }
