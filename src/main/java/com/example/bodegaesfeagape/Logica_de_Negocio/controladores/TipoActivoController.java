@@ -2,11 +2,9 @@ package com.example.bodegaesfeagape.Logica_de_Negocio.controladores;
 
 import org.springframework.stereotype.Controller;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import com.example.bodegaesfeagape.Entidades_de_Negocio.Rol;
 import com.example.bodegaesfeagape.Entidades_de_Negocio.TipoActivo;
-import com.example.bodegaesfeagape.Logica_de_Negocio.clasesBL.RolBL;
 import com.example.bodegaesfeagape.Logica_de_Negocio.clasesBL.TipoActivoBL;
 
 
