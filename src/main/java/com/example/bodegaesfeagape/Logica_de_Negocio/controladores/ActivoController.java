@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.Optional;
 import com.example.bodegaesfeagape.Entidades_de_Negocio.Activo;
 import com.example.bodegaesfeagape.Logica_de_Negocio.clasesBL.ActivoBL;
 
+@Controller
+@RequestMapping("/activos")
 public class ActivoController {
 
     @Autowired
