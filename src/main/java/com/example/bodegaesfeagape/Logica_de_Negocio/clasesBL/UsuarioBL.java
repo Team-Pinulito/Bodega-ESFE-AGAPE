@@ -2,7 +2,6 @@
 package com.example.bodegaesfeagape.Logica_de_Negocio.clasesBL;
 
 import com.example.bodegaesfeagape.Acceso_a_Datos.servicios.implementaciones.UsuarioService;
-import com.example.bodegaesfeagape.Entidades_de_Negocio.Rol;
 import com.example.bodegaesfeagape.Entidades_de_Negocio.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
