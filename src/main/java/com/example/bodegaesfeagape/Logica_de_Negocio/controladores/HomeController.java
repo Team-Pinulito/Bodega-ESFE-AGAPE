@@ -11,6 +11,6 @@ public class HomeController {
     // llamar a la vista index
     @GetMapping("/")
     public String index() {
-        return "home/index";
+        return "layout/index";
     }
 }
