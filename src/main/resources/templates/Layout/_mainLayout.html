@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="icon" th:href="@{/img/kaiadmin/favicon.ico}" type="image/x-icon" />
+    <link rel="icon" th:href="@{/img/esfelogo.png}" type="image/x-icon" />
 
     <!-- Fonts and icons -->
     <script th:src="@{/js/plugin/webfont/webfont.min.js}"></script>
@@ -36,12 +36,17 @@
     <link rel="stylesheet" th:href="@{/css/kaiadmin.min.css}" />
 
     <style>
+        body {
+            font-size: 1.1rem; /* Aumenta el tamaño global de la fuente */
+        }
+
         .wrapper {
             display: flex;
             width: 100%;
         }
+
         .sidebar {
-            width: 280px;
+            width: 300px; /* Ancho de la barra lateral aumentado */
             position: fixed;
             top: 0;
             left: 0;
@@ -49,32 +54,47 @@
             z-index: 999;
             transition: all 0.3s;
         }
+
         .main-panel {
             width: 100%;
             min-height: 100vh;
             transition: all 0.3s;
         }
+
         .content {
             margin-top: 80px;
-            padding: 15px;
+            padding: 20px; /* Aumenta el padding */
         }
+
+        .nav-item a {
+            font-size: 1.2rem; /* Aumenta el tamaño de las opciones del menú */
+        }
+
+        .sidebar-logo .logo-header {
+            padding: 20px; /* Aumenta el padding del logo */
+        }
+
         @media (min-width: 768px) {
             .main-panel {
-                width: calc(100% - 280px);
-                margin-left: 280px;
+                width: calc(100% - 300px); /* Ajusta el ancho del main panel según el nuevo tamaño de la sidebar */
+                margin-left: 300px;
             }
         }
+
         @media (max-width: 767px) {
             .sidebar {
-                margin-left: -280px;
+                margin-left: -300px;
             }
+
             .sidebar.active {
                 margin-left: 0;
             }
+
             .main-panel {
                 width: 100%;
                 margin-left: 0;
             }
+
             .content {
                 margin-top: 60px;
             }
@@ -90,7 +110,7 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a th:href="@{/}" class="logo">
-                        <img th:src="@{/img/esfelogo}" alt="navbar brand" class="navbar-brand" height="20" />
+                        <img th:src="@{/img/esfelogo.png}" alt="navbar brand" class="navbar-brand" height="80" width="80" />
                     </a>
                     <button class="topbar-toggler more">
                         <i class="gg-more-vertical-alt"></i>
@@ -130,7 +150,7 @@
         </div>
     </div>
 
-    <!--   Core JS Files   -->
+    <!-- Core JS Files -->
     <script th:src="@{/js/core/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/js/core/popper.min.js}"></script>
     <script th:src="@{/js/core/bootstrap.min.js}"></script>
