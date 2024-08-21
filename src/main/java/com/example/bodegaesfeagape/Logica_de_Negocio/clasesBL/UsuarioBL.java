@@ -19,11 +19,10 @@ public class UsuarioBL
     @Autowired
     private UsuarioService _UsuarioService;
 
-
-
     // Obtiene Todos Los Registros De La DB
     public Page<Usuario> buscarTodosPaginados(Pageable pageable)
     {
+
         return _UsuarioService.buscarTodosPaginados(pageable);
     }
 

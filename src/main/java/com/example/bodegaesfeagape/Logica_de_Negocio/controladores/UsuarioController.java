@@ -98,6 +98,7 @@ public class UsuarioController
 
         // Registros De Roles:
         List<Rol> Lista_Roles = _RolBL.obtenerTodos();
+
         Usuario Usuario_Obtenido = _UsuarioBL.buscarPorId(id).get();
         model.addAttribute("Lista_Roles", Lista_Roles);
         model.addAttribute("Usuario_Obtenido", Usuario_Obtenido);
