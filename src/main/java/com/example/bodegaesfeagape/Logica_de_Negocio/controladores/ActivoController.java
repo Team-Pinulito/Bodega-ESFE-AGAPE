@@ -6,17 +6,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 import java.util.Optional;
 
 import com.example.bodegaesfeagape.Entidades_de_Negocio.Activo;
 import com.example.bodegaesfeagape.Logica_de_Negocio.clasesBL.ActivoBL;
 
-
 public class ActivoController {
 
- @Autowired
+    @Autowired
     private ActivoBL activoBL;
 
     @GetMapping
@@ -33,7 +31,7 @@ public class ActivoController {
     public ResponseEntity<Activo> buscarPorId(@PathVariable Integer id) {
         Optional<Activo> activo = activoBL.buscarPorId(id);
         return activo.map(ResponseEntity::ok)
-                     .orElse(ResponseEntity.notFound().build());
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
@@ -45,24 +43,24 @@ public class ActivoController {
     @PutMapping("/{id}")
     public ResponseEntity<Activo> editarActivo(@PathVariable Integer id, @RequestBody Activo activoDetalles) {
         return activoBL.buscarPorId(id)
-                      .map(activo -> {
-                          activo.setNombre(activoDetalles.getNombre());
-                          activo.setDescripcion(activoDetalles.getDescripcion());
-                          activo.setEstante(activoDetalles.getEstante());
-                          activo.setTipoActivo(activoDetalles.getTipoActivo());
-                          activo.setCodigo(activoDetalles.getCodigo());
-                          activo.setCodigoDeBarra(activoDetalles.getCodigoDeBarra());
-                          Activo activoActualizado = activoBL.crearOEditar(activo);
-                          return ResponseEntity.ok(activoActualizado);
-                      }).orElse(ResponseEntity.notFound().build());
+                .map(activo -> {
+                    activo.setNombre(activoDetalles.getNombre());
+                    activo.setDescripcion(activoDetalles.getDescripcion());
+                    activo.setEstante(activoDetalles.getEstante());
+                    activo.setTipoActivo(activoDetalles.getTipoActivo());
+                    activo.setCodigo(activoDetalles.getCodigo());
+                    activo.setCodigoDeBarra(activoDetalles.getCodigoDeBarra());
+                    Activo activoActualizado = activoBL.crearOEditar(activo);
+                    return ResponseEntity.ok(activoActualizado);
+                }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarPorId(@PathVariable Integer id) {
         return activoBL.buscarPorId(id)
-                      .map(activo -> {
-                          activoBL.eliminarPorId(id);
-                          return ResponseEntity.ok().<Void>build();
-                      }).orElse(ResponseEntity.notFound().build());
+                .map(activo -> {
+                    activoBL.eliminarPorId(id);
+                    return ResponseEntity.ok().<Void>build();
+                }).orElse(ResponseEntity.notFound().build());
     }
 }
