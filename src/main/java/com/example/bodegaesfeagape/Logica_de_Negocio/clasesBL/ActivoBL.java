@@ -9,7 +9,9 @@ import org.springframework.data.domain.Pageable;
 
 import com.example.bodegaesfeagape.Acceso_a_Datos.servicios.implementaciones.ActivoService;
 import com.example.bodegaesfeagape.Entidades_de_Negocio.Activo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ActivoBL {
  @Autowired
     private ActivoService activoService;
