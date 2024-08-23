@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "ajusteinventarios")
@@ -15,8 +17,9 @@ public class AjusteInventario {
     private Integer id;
 
     @NotNull(message = "La fecha de ingreso es requerida")
-    @Temporal(TemporalType.DATE)
-    private LocalDate fechaIngreso;
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaIngreso;
 
     @NotNull(message = "El correlativo es requerido")
     private Integer correlativo;
@@ -47,11 +50,11 @@ public class AjusteInventario {
         this.id = id;
     }
 
-    public @NotNull(message = "La fecha de ingreso es requerida") LocalDate getFechaIngreso() {
+    public @NotNull(message = "La fecha de ingreso es requerida") Date getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(@NotNull(message = "La fecha de ingreso es requerida") LocalDate fechaIngreso) {
+    public void setFechaIngreso(@NotNull(message = "La fecha de ingreso es requerida") Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
