@@ -16,7 +16,6 @@
 
 <body>
     <div layout:fragment="content">
-        <!-- Mostrar mensaje de confirmación en caso de éxito -->
         <div th:if="${msg != null}">
             <script>
                 Swal.fire({
@@ -26,8 +25,6 @@
                 });
             </script>
         </div>
-
-        <!-- Mostrar mensaje de error en caso de error -->
         <div th:if="${error != null}">
             <script>
                 Swal.fire({
@@ -46,42 +43,35 @@
 
                 <div class="card-body">
                     <form th:action="@{/activos/save}" th:object="${activo}" class="row" method="post">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label" for="nombre">Nombre<span style="color: red;">*</span></label>
                             <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
                                 placeholder="Nombre del activo" required>
                         </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="descripcion">Descripción</label>
-                            <textarea class="form-control" th:field="*{descripcion}" id="descripcion"
-                                placeholder="Descripción del activo"></textarea>
+                        <div class="col-md-6">
+                            <label class="form-label" for="descripcion">Descripción<span
+                                    style="color: red;">*</span></label>
+                            <textarea class="form-control" th:field="*{descripcion}" id="descripcion" cols="12" rows="3"
+                                placeholder="Descripción del activo" required></textarea>
                         </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="estante">Estante</label>
-                            <input type="text" class="form-control" th:field="*{estante}" id="estante"
-                                placeholder="Estante del activo">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="tipoActivo">Tipo de Activo</label>
-                            <input type="text" class="form-control" th:field="*{tipoActivo}" id="tipoActivo"
-                                placeholder="Tipo de activo">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="codigo">Código</label>
+                        <div class="col-md-6">
+                            <label class="form-label" for="codigo">Código<span style="color: red;">*</span></label>
                             <input type="text" class="form-control" th:field="*{codigo}" id="codigo"
-                                placeholder="Código del activo">
+                                placeholder="Código del activo" required>
                         </div>
-                        <div class="col-md-12">
-                            <label class="form-label" for="codigoDeBarra">Código de Barra</label>
+                        <div class="col-md-6">
+                            <label class="form-label" for="codigoDeBarra">Código de Barra<span
+                                    style="color: red;">*</span></label>
                             <input type="text" class="form-control" th:field="*{codigoDeBarra}" id="codigoDeBarra"
-                                placeholder="Código de barra del activo">
+                                placeholder="Código de barra" required>
                         </div>
                         <div class="row" style="display: flex; flex-wrap: 3px;">
                             <div class="col-md-6" style="padding-top: 10px;">
                                 <button style="width: 100%;" type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                             <div class="col-md-6" style="padding-top: 10px;">
-                                <a style="width: 100%;" class="btn btn-secondary" th:href="@{/activos/index}">Regresar</a>
+                                <a style="width: 100%;" class="btn btn-secondary"
+                                    th:href="@{/activos/index}">Regresar</a>
                             </div>
                         </div>
                     </form>
