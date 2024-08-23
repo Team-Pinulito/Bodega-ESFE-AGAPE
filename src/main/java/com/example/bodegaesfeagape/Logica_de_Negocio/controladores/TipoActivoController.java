@@ -10,23 +10,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import com.example.bodegaesfeagape.Entidades_de_Negocio.Activo;
-import com.example.bodegaesfeagape.Logica_de_Negocio.clasesBL.ActivoBL;
-
-import jakarta.validation.Valid;
-
+import com.example.bodegaesfeagape.Entidades_de_Negocio.TipoActivo;
+import com.example.bodegaesfeagape.Logica_de_Negocio.clasesBL.TipoActivoBL;
 
 @Controller
 @RequestMapping("/tipoActivos")
 public class TipoActivoController {
-  @Autowired
-    private ActivoBL activoBL;
+    
+    @Autowired
+    private TipoActivoBL tipoActivoBL;
 
     @GetMapping("/index")
     public String index(Model model,
@@ -36,73 +33,72 @@ public class TipoActivoController {
         int pageSize = size.orElse(5);
         PageRequest pageable = PageRequest.of(currentPage - 1, pageSize);
 
-        Page<Activo> activos = activoBL.buscarTodosPaginados(pageable);
-        model.addAttribute("activos", activos);
+        Page<TipoActivo> tipoActivos = tipoActivoBL.buscarTodosPaginados(pageable);
+        model.addAttribute("tipoActivos", tipoActivos);
 
-        if (activos.getTotalPages() > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, activos.getTotalPages())
+        if (tipoActivos.getTotalPages() > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, tipoActivos.getTotalPages())
                     .boxed()
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "activos/index";
+        return "tipoActivos/index";
     }
 
     @GetMapping("/create")
-    public String create(Model model) {
-        model.addAttribute("activo", new Activo());
-        return "activos/create";
+    public String create(TipoActivo tipoActivo) {
+        return "tipoActivos/create";
     }
 
     @PostMapping("/save")
-    public String save(@Valid @ModelAttribute("activo") Activo activo, BindingResult result, Model model, RedirectAttributes attributes) {
+    public String save(TipoActivo tipoActivo, BindingResult result, Model model, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return "activos/create";
+            model.addAttribute(tipoActivo);
+            attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");
+            return "tipoActivos/create";
         }
 
-        activoBL.crearOEditar(activo);
-        attributes.addFlashAttribute("msg", "Activo guardado correctamente");
-        return "redirect:/activos/index";
+        tipoActivoBL.crearOEditar(tipoActivo);
+        attributes.addFlashAttribute("msg", "El tipo activo guardado correctamente");
+        return "redirect:/tipoActivos/index";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
-        Optional<Activo> activoOptional = activoBL.buscarPorId(id);
-        if (activoOptional.isPresent()) {
-            model.addAttribute("activo", activoOptional.get());
-            return "/activos/edit";
-        } else {
-            return "redirect:/activos/index";
-        }
+        TipoActivo tipoActivo = tipoActivoBL.buscarPorId(id).get();
+        model.addAttribute("tipoActivo", tipoActivo);
+        return "/tipoActivos/edit";
     }
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") Integer id, Model model) {
-        Optional<Activo> activoOptional = activoBL.buscarPorId(id);
-        if (activoOptional.isPresent()) {
-            model.addAttribute("activo", activoOptional.get());
-            return "activos/details";
+        Optional<TipoActivo> tOptional = tipoActivoBL.buscarPorId(id);
+        if (tOptional.isPresent()) {
+            TipoActivo tipoActivo = tOptional.get();
+            model.addAttribute("tipoActivo", tipoActivo);
+            return "tipoActivos/details";
         } else {
-            return "redirect:/activos/index";
+            return "redirect:/tipoActivos/index";
         }
     }
 
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable("id") Integer id, Model model) {
-        Optional<Activo> activoOptional = activoBL.buscarPorId(id);
-        if (activoOptional.isPresent()) {
-            model.addAttribute("activo", activoOptional.get());
-            return "/activos/delete";
+        Optional<TipoActivo> tOptional = tipoActivoBL.buscarPorId(id);
+        if (tOptional.isPresent()) {
+            TipoActivo tipoActivo = tOptional.get();
+            model.addAttribute("tipoActivo", tipoActivo);
+            return "/tipoActivos/delete";
         } else {
-            return "redirect:/activos/index";
+            return "redirect:/tipoActivos/index";
         }
     }
 
     @PostMapping("/delete")
-    public String delete(Activo activo, RedirectAttributes attributes) {
-        activoBL.eliminarPorId(activo.getId());
-        attributes.addFlashAttribute("msg", "Activo eliminado correctamente");
-        return "redirect:/activos/index";
+    public String delete(TipoActivo tipoActivo, RedirectAttributes attributes) {
+        tipoActivoBL.eliminarPorId(tipoActivo.getId());
+        attributes.addFlashAttribute("msg", "El tipo activo eliminado correctamente");
+        return "redirect:/tipoActivos/index";
     }
 }
