@@ -1,8 +1,8 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
-
 import java.util.HashSet;
 import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "activos")
@@ -21,10 +21,10 @@ public class Activo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "El nombre es requerido")
+    @NotNull(message = "El nombre es requerido")
     private String nombre;
 
-    @NotBlank(message = "La descripción es requerida")
+    @NotNull(message = "La descripcion es requerida")
     private String descripcion;
 
     @ManyToOne
@@ -35,10 +35,10 @@ public class Activo {
     @JoinColumn(name = "tipoActivo_id")
     private TipoActivo tipoActivo;
 
-    @NotBlank(message = "El codigo es requerido")
+    @NotNull(message = "El codigo es requerido")
     private String codigo;
 
-    @NotBlank(message = "El codigo de barras es requerido")
+    @NotNull(message = "El codigo es requerido")
     private String codigoDeBarra;
 
     @OneToMany(mappedBy = "activo")
