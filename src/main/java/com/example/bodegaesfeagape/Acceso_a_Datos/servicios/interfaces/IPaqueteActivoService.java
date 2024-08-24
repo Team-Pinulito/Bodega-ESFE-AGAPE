@@ -16,7 +16,7 @@ public interface IPaqueteActivoService {
 
     Optional<PaqueteActivo> buscarPorId(Integer id);
 
-    PaqueteActivo crearOEditar(PaqueteActivo bodega);
+    PaqueteActivo crearOEditar(PaqueteActivo paqueteActivo);
 
     void eliminarPorId(Integer id);
 }

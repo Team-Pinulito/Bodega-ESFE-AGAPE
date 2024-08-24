@@ -1,5 +1,8 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -17,6 +20,9 @@ public class PaqueteActivo {
     @NotNull(message = "El Nombre es Requerido")
     private String nombre;
     
+    @OneToMany(mappedBy = "paqueteActivo")
+    private Set<DetallePaqueteActivo> detallePaqueteActivos = new HashSet<>();
+
     public String getCorrelativo() {
         return correlativo;
     }
@@ -39,6 +45,14 @@ public class PaqueteActivo {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Set<DetallePaqueteActivo> getDetallePaqueteActivos() {
+        return detallePaqueteActivos;
+    }
+
+    public void setDetallePaqueteActivos(Set<DetallePaqueteActivo> detallePaqueteActivos) {
+        this.detallePaqueteActivos = detallePaqueteActivos;
     }
 
    
