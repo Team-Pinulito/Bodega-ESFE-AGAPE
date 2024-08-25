@@ -46,12 +46,12 @@ public class RolController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "roles/index";
+        return "Roles/index";
     }
 
     @GetMapping("/create")
     public String create(Rol rol) {
-        return "roles/create";
+        return "Roles/create";
     }
 
     @PostMapping("/save")
@@ -59,7 +59,7 @@ public class RolController {
         if (result.hasErrors()) {
             model.addAttribute(rol);
             attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");
-            return "roles/create";
+            return "Roles/create";
         }
 
         rolBL.crearOEditar(rol);
@@ -71,7 +71,7 @@ public class RolController {
     public String edit(@PathVariable("id") Integer id, Model model) {
         Rol rol = rolBL.buscarPorId(id).get();
         model.addAttribute("rol", rol);
-        return "/roles/edit";
+        return "/Roles/edit";
     }
 
     @GetMapping("/details/{id}")
@@ -80,7 +80,7 @@ public class RolController {
         if (rOptional.isPresent()) {
             Rol rol = rOptional.get();
             model.addAttribute("rol", rol);
-            return "roles/details"; 
+            return "Roles/details";
         } else {
             return "redirect:/roles/index"; 
         }
@@ -92,7 +92,7 @@ public class RolController {
         if (rOptional.isPresent()) {
             Rol rol = rOptional.get();
             model.addAttribute("rol", rol);
-            return "/roles/delete";
+            return "/Roles/delete";
         } else {
             return "redirect:/roles/index";
         }
