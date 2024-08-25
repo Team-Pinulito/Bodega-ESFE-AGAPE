@@ -47,13 +47,13 @@ public class EstanteController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "estante/index";
+        return "Estante/index";
     }
 
     @GetMapping("/create")
     public String create(Estante estante, Model model ) {
         model.addAttribute("bodegas", bodegaBL.obtenerTodos());
-        return "estante/create";
+        return "Estante/create";
     }
 
     @PostMapping("/save")
@@ -61,7 +61,7 @@ public class EstanteController {
         if (result.hasErrors()) {
             model.addAttribute(estante);
             attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");
-            return "estante/create";
+            return "Estante/create";
         }
 
         estanteBL.crearOEditar(estante);
@@ -74,7 +74,7 @@ public class EstanteController {
         Estante estante = estanteBL.buscarPorId(id).get();
         model.addAttribute("estante", estante);
         model.addAttribute("bodegas", bodegaBL.obtenerTodos());
-        return "/estante/edit";
+        return "/Estante/edit";
     }
 
     @GetMapping("/details/{id}")
@@ -84,7 +84,7 @@ public class EstanteController {
             Estante estante = rOptional.get();
             model.addAttribute("estante", estante);
             model.addAttribute("bodegas", bodegaBL.obtenerTodos());
-            return "estante/details";
+            return "Estante/details";
         } else {
             return "redirect:/estante/index";
         }
@@ -97,7 +97,7 @@ public class EstanteController {
             Estante estante = rOptional.get();
             model.addAttribute("estante", estante);
             model.addAttribute("bodegas", bodegaBL.obtenerTodos());
-            return "/estante/delete";
+            return "/Estante/delete";
         } else {
             return "redirect:/estante/index";
         }
