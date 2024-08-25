@@ -43,12 +43,12 @@ public class BodegaController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "bodega/index";
+        return "Bodega/index";
     }
 
     @GetMapping("/create")
     public String create(Bodega bodega) {
-        return "bodega/create";
+        return "Bodega/create";
     }
 
     @PostMapping("/save")
@@ -56,7 +56,7 @@ public class BodegaController {
         if (result.hasErrors()) {
             model.addAttribute(bodega);
             attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");
-            return "bodega/create";
+            return "Bodega/create";
         }
 
         bodegaBL.crearOEditar(bodega);
@@ -68,7 +68,7 @@ public class BodegaController {
     public String edit(@PathVariable("id") Integer id, Model model) {
         Bodega bodega = bodegaBL.buscarPorId(id).get();
         model.addAttribute("bodega", bodega);
-        return "/bodega/edit";
+        return "/Bodega/edit";
     }
 
     @GetMapping("/details/{id}")
@@ -77,7 +77,7 @@ public class BodegaController {
         if (rOptional.isPresent()) {
             Bodega bodega = rOptional.get();
             model.addAttribute("bodega", bodega);
-            return "bodega/details";
+            return "Bodega/details";
         } else {
             return "redirect:/bodega/index";
         }
@@ -89,7 +89,7 @@ public class BodegaController {
         if (rOptional.isPresent()) {
             Bodega bodega = rOptional.get();
             model.addAttribute("bodega", bodega);
-            return "/bodega/delete";
+            return "/Bodega/delete";
         } else {
             return "redirect:/bodega/index";
         }
