@@ -46,19 +46,19 @@ public class ActivoController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "activos/index";
+        return "Activos/index";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("activo", new Activo());
-        return "activos/create";
+        return "Activos/create";
     }
 
     @PostMapping("/save")
     public String save(@Valid @ModelAttribute("activo") Activo activo, BindingResult result, Model model, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return "activos/create";
+            return "Activos/create";
         }
 
         // Generate barcode
@@ -80,7 +80,7 @@ public class ActivoController {
         Optional<Activo> activoOptional = activoBL.buscarPorId(id);
         if (activoOptional.isPresent()) {
             model.addAttribute("activo", activoOptional.get());
-            return "/activos/edit";
+            return "/Activos/edit";
         } else {
             return "redirect:/activos/index";
         }
@@ -91,7 +91,7 @@ public class ActivoController {
         Optional<Activo> activoOptional = activoBL.buscarPorId(id);
         if (activoOptional.isPresent()) {
             model.addAttribute("activo", activoOptional.get());
-            return "activos/details";
+            return "Activos/details";
         } else {
             return "redirect:/activos/index";
         }
@@ -102,7 +102,7 @@ public class ActivoController {
         Optional<Activo> activoOptional = activoBL.buscarPorId(id);
         if (activoOptional.isPresent()) {
             model.addAttribute("activo", activoOptional.get());
-            return "/activos/delete";
+            return "/Activos/delete";
         } else {
             return "redirect:/activos/index";
         }
