@@ -1,5 +1,6 @@
 package com.example.bodegaesfeagape.Entidades_de_Negocio;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class DetallePaqueteActivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    
+    @Nonnull
     @ManyToOne
     @JoinColumn(name = "paqueteActivo_id")
     private PaqueteActivo paqueteActivo;
@@ -27,6 +29,29 @@ public class DetallePaqueteActivo {
 
     @NotNull(message = "La cantidad es requerida")
     private Integer cantidad;
+
+    
+    public DetallePaqueteActivo() {
+    }
+
+    
+
+    // Constructor que acepta PaqueteActivo y cantidad
+    public DetallePaqueteActivo(PaqueteActivo paqueteActivo, int cantidad) {
+        this.paqueteActivo = paqueteActivo;
+        this.cantidad = cantidad;
+        this.activo = null; // o maneja activo según tu lógica
+    }
+
+    // Constructor que acepta PaqueteActivo, Activo, y cantidad
+    public DetallePaqueteActivo(PaqueteActivo paqueteActivo, Activo activo,
+            @NotNull(message = "La cantidad es requerida") Integer cantidad) {
+        this.paqueteActivo = paqueteActivo;
+        this.activo = activo;
+        this.cantidad = cantidad;
+    }
+
+
 
     public Integer getId() {
         return id;
