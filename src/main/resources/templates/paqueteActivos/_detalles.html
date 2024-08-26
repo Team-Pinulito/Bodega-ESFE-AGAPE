@@ -1,0 +1,41 @@
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Activo</th>
+            <th>Cantidad</th>
+            <th th:if="${action == 'create' || action == 'edit'}">
+                <button type="submit" class="btn btn-success" th:formaction="@{/paqueteActivos/adddetalles}">+</button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="item, index : ${paqueteActivo.detallePaqueteActivos}">
+            <td style="display: none;">
+                <input type="hidden" class="form-control" th:value="${item.id}"
+                    th:name="'detallePaqueteActivos[' + ${index.index} + '].id'" id="id">
+            </td>
+            <td>
+                <select class="form-control" th:field="*{detallePaqueteActivos[__${index.index}__].activo.id}" required>
+                    <option th:each="activo : ${activos}" th:value="${activo.id}" th:text="${activo.nombre}"></option>
+                </select>
+            </td>
+            <td>
+                <input type="number" class="form-control" th:field="*{detallePaqueteActivos[__${index.index}__].cantidad}" required />
+            </td>
+            <td th:if="${action == 'create' || action == 'edit'}">
+                <button type="submit" class="btn btn-outline-danger" th:formaction="@{/paqueteActivos/deldetalles/{id}(id=${item.id})}">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script th:if="${action == 'delete' || action == 'details'}">
+     document.addEventListener("DOMContentLoaded", function() {
+        const selects = document.querySelectorAll("select");
+        const inputs = document.querySelectorAll("input[type=number]");
+        
+        selects.forEach(select => select.setAttribute("disabled", "disabled"));
+        inputs.forEach(input => input.setAttribute("disabled", "disabled"));
+    });
+</script>
