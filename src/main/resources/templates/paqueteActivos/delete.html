@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="/layout/_mainLayout">
+
+<head>
+    <title>Eliminar</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <!-- Mostrar mensaje de confirmación en caso de éxito -->
+        <div th:if="${msg != null}">
+            <script>
+                Swal.fire({
+                    title: "Confirmación",
+                    text: '[[${msg}]]',
+                    icon: "success"
+                });
+            </script>
+        </div>
+
+        <!-- Mostrar mensaje de error en caso de error -->
+        <div th:if="${error != null}">
+            <script>
+                Swal.fire({
+                    title: "Error",
+                    text: '[[${error}]]',
+                    icon: "error"
+                });
+            </script>
+        </div>
+
+        <div class="row" style="margin: 60px;">
+            <div class="card">
+                <div class="card-header row">
+                    <h1 class="card-text col-md-12" style="text-align: center;">Eliminar el paquete activo</h1>
+                </div>
+
+                <div class="card-body">
+                    <form th:action="@{/paqueteActivos/delete}" th:object="${paqueteActivo}" class="row" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="col-md-6">
+                            <label class="form-label" for="correlativo">Correlativo<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control" th:field="*{correlativo}" id="correlativo"
+                                placeholder="Correlativo del paquete activo" disabled required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="nombre">Nombre<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                                placeholder="Nombre del paquete activo"  disabled required>
+                        </div>
+                        <div class="row" th:with="action=${'delete'}">            
+                            <th:block th:insert="~{/paqueteActivos/_detalles.html}" ></th:block>
+                        </div>
+                        <div class="row" style="display: flex; flex-wrap: 3px;">
+                            <div class="col-md-6" style="padding-top: 10px;">
+                                <button style="width: 100%;" type="submit" class="btn btn-danger">Eliminar</button>
+                            </div>
+                            <div class="col-md-6" style="padding-top: 10px;">
+                                <a style="width: 100%;" class="btn btn-secondary"
+                                    th:href="@{/paqueteActivos/index}">Regresar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
