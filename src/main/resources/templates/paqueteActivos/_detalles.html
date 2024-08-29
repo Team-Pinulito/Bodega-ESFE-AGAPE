@@ -21,7 +21,8 @@
                 </select>
             </td>
             <td>
-                <input type="number" class="form-control" th:field="*{detallePaqueteActivos[__${index.index}__].cantidad}" required />
+                <input type="number" class="form-control" th:field="*{detallePaqueteActivos[__${index.index}__].cantidad}" 
+                required min="0" max="99999" oninput="if(this.value.length > 5) this.value = this.value.slice(0, 5);" />
             </td>
             <td th:if="${action == 'create' || action == 'edit'}">
                 <button type="submit" class="btn btn-outline-danger" th:formaction="@{/paqueteActivos/deldetalles/{id}(id=${item.id})}">Eliminar</button>
